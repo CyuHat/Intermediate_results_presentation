@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Mobilité de confort</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Vestin Hategekimana" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/d3/d3.min.js"></script>
+    <script src="libs/forceNetwork-binding/forceNetwork.js"></script>
+    <script src="libs/echarts4r/echarts-en.min.js"></script>
+    <script src="libs/echarts4r/ecStat.min.js"></script>
+    <script src="libs/echarts4r/dataTool.min.js"></script>
+    <script src="libs/echarts4r-binding/echarts4r.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Mobilité de confort
+]
+.subtitle[
+## Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?
+]
+.author[
+### Vestin Hategekimana
+]
+.institute[
+### IDESO
+]
+.date[
+### 10-04-2023
+]
+
+---
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Migration et Mobilité en temps de crise
+
+---
+
+## Thèse:
+
+--
+
+## Impact longitudinal des crises sur les résultats économiques, sociaux et de mobilité. 
+
+--
+
+## **En particulier le rôle:** du genre, des compétences et du statut migratoire.
+
+--
+
+## **Hypothèse:** Les crises impactent de manière différenciée la population étrangère et la population native 
+
+--
+
+## **Données:** Registres fédéraux et Migration Mobility Survey
+
+---
+
+# Article
+
+## *Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?*
+
+--
+
+# Point de départ
+
+## Durant la pandémie, plusieurs facteurs ont influencé la mobilité résidentielle.
+
+---
+
+# Motivations
+
+**Crise: COVID-19**
+
+- Récente
+- Mondiale
+- Globale
+    - Santé, Économie, Mobilité, etc.
+
+--
+
+**Context: Suisse**
+
+- Forte Migration
+    - ~1/3 population résidente (D’Amato et al., 2019)
+- Marché du logement spécifique
+    - Accès à la propriété limité (Wanner, 2017)
+    - Accès à la mobilité limité (Wanner, 2017)
+
+--
+
+**Données: Registres de la population**
+- Exhaustives
+
+---
+
+class: inverse, center, middle
+
+# Revue de la littérature
+
+## Mobilité résidentielle durant la pandémie
+
+---
+
+# Besoin de confort (Suisse)
+
+--
+
+(Pagani et al., 2021)
+
+**Effet de la première vague de covid-19 sur la préférence résidentielle**
+- Pour 60% des répondants la fonction idéale de la maison en tant que place pour l'autoreprésentation a pris de l'importance. Et les besoins basiques de logement ont perdu en importance
+
+*Note: Autoreprésentation = place pour l'expression, pour la satisfaction des aspirations*
+
+--
+
+--- 
+
+(Marcelo et al., 2022)
+
+**Études sur le besoin d'espace récréatif à Zürich à l'aide de données de mobilité GPS**
+- Ce sont surtout les villes principales du cantons qui sont saturées et le covid-19 a augmenté les besoins
+
+*Note: Mesure de la demande en comptant la proportion de personnes qui ont fait des marches récréatives qui correspondent à des tours (retour au départ) labélisés comme loisir ou marche (MOBIS:COVID19)*
+
+---
+
+# Facteurs de la mobilité résidentielle  durant la pandémie
+
+(Duque-Calvache et al., 2021)
+
+- Données de sondage (Espagne, ~3'000)
+- Facteurs:
+	1. Besoin de meilleur conditions de logement
+	2. Besoin de prendre soin des autres et d'être pris en charge
+	3. Mobilité forcé: Solitude, peur et problèmes économiques
+
+L'importance de ces facteurs dépend d’autres caractéristiques socioéconomiques telles que la classe sociale et l’âge.
+
+- Classe
+    - ouvrier: confort
+    - classe moyenne: proximité familiale
+- Âge
+    - jeunes: confort/proximité
+    - ~30 ans: économique
+    - +40 ans: soin
+
+---
+
+## Autres cas durant la pandémie
+
+???
+
+1) The impact of the COVID-19 pandemic on internal migration in Germany: A descriptive analysis
+
+2) Movers from the city in the frist year of covid
+- Suède (Stockohlm)
+- Finland (Helsinki)
+- Danemark (Copenhague)
+- États-Unis (New-York, Chicago, San-Fransisco, Washington DC, Houston, Philadelphia)
+- Royaum-uni
+- Compare caractéristique socioéconomique des anciens flux en dehors des villes avec les nouveaux flux du covid
+
+3) The COVID-19 pandemic and residential mobility intention in the United-State: Evidence from Google Trends data
+
+--
+
+.pull-left[
+**Allemagne**
+
+(Stawarz et al., 2022)
+
+- Données de registres
+- Solde migratoire négatif des villes
+- Flux familiaux sortant / moins de flux de jeunes
+]
+
+--
+
+.pull-right[
+**Norvège (Oslo)**
+
+(Tønnessen, 2021)
+
+- Données de registres
+- Forte mobilité en dehors de la ville
+- principalement:
+    - Personnes âgées
+    - Télétravaille
+    - Non-originaire de la ville
+]
+
+--
+
+**États-Unis**
+
+(Lei &amp; Liu, 2022)
+
+- Google trends
+- Réduction de l'intention de mobilité
+- Augmentation drastique ensuite
+- Intention de proximité familiale
+
+---
+
+## Facteurs influancçnt la mobilité durant la pandémie
+
+- **Aspirations**
+    - Besoin de confort (départ des villes)
+    - Besoin de proximité avec les proches
+
+--
+
+- **Caractéristiques socioéconomiques**
+    - Âge
+    - Classe sociale
+    - Activité
+    - État-civil
+    - Famille
+
+&gt; Les caractéristiques socioéconomiques influencent les aspirations
+
+En raison des données l'article porte sur le besoin de confort ou autrement dit la **mobilité en direction de zones rurales**.
+
+---
+
+# Cas en Suisse
+
+(OFL, 2021)
+
+Données de registres
+- Légère propension à déménager vers des régions moins densément peuplée
+- Cas marginal: 0.52% des cas de mobilité (769'000)
+- Catégorie particulière:
+    - Personne seule
+    - Mobile
+    - Haut salaire
+    - **Donc flexible**
+- Demande de logement en propriété
+    - Hausse pour les maison individuelles
+    - Hausse pour les surfaces plus étendues
+
+---
+
+# Mobilité résidentielle en Suisse
+
+(Lacroix et al., 2020)
+
+**Le rôle des évènements familiaux sur la mobilité**
+
+- mobilité résidentielle augmente:
+    - naissance d'un nouvel enfant
+    - marriage
+    - divorce
+
+Probabilité de mobilité plus forte pour la population suisse.
+
+Importance du revenu du ménage dans la probabilité de réaliser une mobilité résidentielle en lien avec les évènements de vie.
+  &gt; Effet plus fort pour la population étrangère
+
+---
+
+# Mobilité résidentielle en Suisse
+
+(Wanner, 2017)
+
+**Vérifier l'hypothèse d'un départ des villes des ménages les plus pauvres dans 6 agglomérations**
+
+L'hypothèse n'est pas vérifiée
+- Revenu aisé quittent les villes, plus faibles revenus rejoignent les villes
+- Solde migratoire négatif pour les centres (départ population active).
+- Mobilité intracommunale fréquente pour faibles revenus.
+- Le revenu du ménage important dans la capacité de mobilité en dehors de la commune
+- Peu d'écart entre population étrangère et native
+- Possible effet sur la ségrégation spatiale économique
+
+Autres facteurs:
+- Âge
+- Taille du ménage
+- État-civil
+- Niveau de formation
+- Statut sur le marché du travail
+
+---
+
+# Résumé
+
+--
+
+**Mobilité vers les régions rurales plus prononcées en période de pandémie** (OFL, 2021)
+
+--
+
+**Potentiel besoin de confort** (Marcelo et al., 2022; Pagani et al., 2021)
+
+--
+
+**Le profils ayant accès à cette mobilité** (Stawarz et al., 2022; Tønnessen, 2021)
+- Personnes seules / familles
+- Haut revenu
+
+--
+
+**Questions**
+- Y a-t-il eu une augmentation des flux en direction des régions rurales durant la pandémie en Suisse?
+- Y a-t-il eu une différence dans la mobilité résidentielle entre la population native et la population étrangère?
+
+---
+
+# Question de recherche
+
+*Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?*
+
+H1: La pandémie a provoqué une augmentation de la mobilité résidentielle en direction des régions rurales (besoin de confort)
+  &gt;(Marcelo et al., 2022; OFL, 2021; Pagani et al., 2021)
+
+H2: La mobilité en direction des zones rurales provoquée par la crise de la COVID-19 concerne d'avantages la population suisse qu'étrangère
+  &gt;(Lacroix et al., 2020; Wanner, 2017)
+
+H3: Une diminution du revenu aura plus d'effet sur la réduction de la mobilité de la population étrangère
+  &gt;(Lacroix et al., 2020)
+
+---
+
+# Mobilité résidentielle (concept)
+
+
+### **Mobilité résidentielle:** Changement de logement entre le 1er janvier et les 31 décembre d'une année
+
+--
+
+### *Tout autre déplacement  au milieu de l'année n'est pas considéré*
+
+--
+
+## Quatre modalités
+
+- intracommunale
+- **intercommunale (intracantonale)**
+- **intercommunale (intercantonale)**
+- internationale
+
+--
+
+### Pour des raisons liées aux données et à la question de recherche, seules les mobilités intercommunales seront prises en compte.
+
+---
+
+### Opérationnalisation
+
+**Données**
+- STATPOP: Statistique de la population et des ménages (registres)
+- Registre des comptes individuels de la Centrale de compensation AVS
+- Mise en relation des données avec le numéro AVS
+
+**Population (ménage)**
+- Population de moins de 65 ans
+- Présente sans interruption entre 2018-2021
+- Ménage de 3 à 10 personnes
+- Résidence principale
+
+**Variables indépendantes**
+- Nationalité (suisse, étranger, mixte)
+- Revenu du ménage (décile, évolution)
+- Taille du ménage (effectif, évolution)
+- Âge moyen du ménage
+- Urbanité du précédent logement (urbain, rural, intermédiaire)
+
+**Bi-annuel**
+- (2018-2019) vs (2020-2021)
+
+---
+
+# Ménage
+
+Les identifiants du ménage sont uniques rendant le suivit dans le temps 
+
+l'Appariement a été réalisée par des algorithmes d'analyse de réseau (bipartite projection et component detection)
+
+
+
+.pull-left[
+
+**Bipartite (1)**
+
+<div class="forceNetwork html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a5cf3d4c65693b5b2ca1" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-a5cf3d4c65693b5b2ca1">{"x":{"links":{"source":[5,5,0,9,9,2,11,3,3,2,5,11,11,6,9,2,3,2,7,10,0,0,5,10,6,8,8,2,8,8,1,1,3,6,11,11,10,10,5,2,1,11,2,3,6,7,7,3,8,8,11,9,6,3,1,2,6,3,0,5,3,1,8,2,11,5,11,5,7,8,5,1,7,1,4,4,2,3,4,9,4,4,8,10,10,3,1,1,8,0,9,7,2,4,5,5,11,9,6,0],"target":[35,34,34,29,12,29,25,21,22,19,32,29,28,12,33,13,12,15,35,33,26,18,29,29,22,31,32,12,19,18,16,27,13,23,27,24,34,23,18,16,13,16,31,14,31,30,14,17,13,34,18,16,32,33,34,26,27,19,19,30,31,33,16,21,26,31,23,20,32,26,33,35,17,18,29,32,32,27,27,14,24,21,20,20,30,25,25,12,14,20,27,31,17,33,16,28,20,24,25,28],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36],"group":[0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]},"options":{"NodeID":"rowid","Group":"type","colourScale":"d3.scaleOrdinal(d3.schemeCategory10);","fontSize":7,"fontFamily":"serif","clickTextSize":17.5,"linkDistance":50,"linkWidth":"function(d) { return Math.sqrt(d.value); }","charge":-30,"opacity":0.8,"zoom":false,"legend":false,"arrows":false,"nodesize":false,"radiusCalculation":" Math.sqrt(d.nodesize)+6","bounded":false,"opacityNoHover":0,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+
+]
+
+.pull-right[
+
+**One mode (2)**
+
+<div class="forceNetwork html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-83c7b9e48b3d2bc9ca11" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-83c7b9e48b3d2bc9ca11">{"x":{"links":{"source":[0,1,2,3,5,7],"target":[8,3,3,6,8,8],"colour":["#666","#666","#666","#666","#666","#666"]},"nodes":{"name":[1,2,3,4,5,6,7,8,9,10,11,12],"group":[1,1,1,1,1,1,1,1,1,1,1,1]},"options":{"NodeID":"rowid","Group":"group","colourScale":"d3.scaleOrdinal(d3.schemeCategory10);","fontSize":7,"fontFamily":"serif","clickTextSize":17.5,"linkDistance":50,"linkWidth":"function(d) { return Math.sqrt(d.value); }","charge":-30,"opacity":0.8,"zoom":false,"legend":false,"arrows":false,"nodesize":false,"radiusCalculation":" Math.sqrt(d.nodesize)+6","bounded":false,"opacityNoHover":0,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+
+]
+
+---
+
+
+
+# Analyse descriptive (1)
+
+<div class="echarts4r html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-43284e9657970e2882ab" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-43284e9657970e2882ab">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["Urbain","Rural","Intermediate"]},"series":[{"name":"n","type":"pie","data":[{"value":2195540,"name":"Urbain"},{"value":600594,"name":"Rural"},{"value":856518,"name":"Intermediate"}]}],"title":[{"text":"Distribution des ménages","subtext":"2018-2021"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Analyse descriptive (2)
+
+<div class="echarts4r html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-76554a047c27e4def62d" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-76554a047c27e4def62d">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["Immobilité","Mobilité"]},"series":[{"name":"n","type":"pie","data":[{"value":2672812,"name":"Immobilité"},{"value":66677,"name":"Mobilité"}]}],"title":[{"text":"Mobilité résidentielle\ndes ménages","subtext":"2018-2021"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Analyse descriptive (3)
+
+<div class="echarts4r html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6b8c395e51fc960f6d62" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-6b8c395e51fc960f6d62">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"Urbain (18)"},{"name":"Intermediate (19)"},{"name":"Intermediate (20)"},{"name":"Urbain (19)"},{"name":"Urbain (20)"},{"name":"Rural (18)"},{"name":"Rural (19)"},{"name":"Rural (20)"},{"name":"Intermediate (18)"},{"name":"Intermediate (21)"},{"name":"Urbain (21)"},{"name":"Rural (21)"}],"links":[{"source":"Urbain (18)","target":"Intermediate (19)","value":" 3312"},{"source":"Intermediate (19)","target":"Intermediate (20)","value":"15951"},{"source":"Intermediate (20)","target":"Intermediate (21)","value":"13660"},{"source":"Urbain (18)","target":"Urbain (19)","value":"28978"},{"source":"Urbain (19)","target":"Urbain (20)","value":"30108"},{"source":"Urbain (20)","target":"Urbain (21)","value":"28927"},{"source":"Urbain (19)","target":"Intermediate (20)","value":" 3021"},{"source":"Rural (18)","target":"Rural (19)","value":" 6031"},{"source":"Rural (19)","target":"Rural (20)","value":" 7437"},{"source":"Rural (20)","target":"Rural (21)","value":" 9229"},{"source":"Intermediate (18)","target":"Intermediate (19)","value":"15329"},{"source":"Intermediate (19)","target":"Urbain (20)","value":" 1899"},{"source":"Intermediate (20)","target":"Urbain (21)","value":" 3766"},{"source":"Intermediate (18)","target":"Rural (19)","value":" 1511"},{"source":"Urbain (20)","target":"Intermediate (21)","value":" 2585"},{"source":"Urbain (18)","target":"Rural (19)","value":" 1653"},{"source":"Rural (19)","target":"Urbain (20)","value":"  876"},{"source":"Urbain (20)","target":"Rural (21)","value":" 1371"},{"source":"Rural (20)","target":"Intermediate (21)","value":"  696"},{"source":"Rural (19)","target":"Intermediate (20)","value":"  882"},{"source":"Intermediate (20)","target":"Rural (21)","value":" 2428"},{"source":"Intermediate (19)","target":"Rural (20)","value":" 1748"},{"source":"Rural (18)","target":"Urbain (19)","value":" 1092"},{"source":"Intermediate (18)","target":"Urbain (19)","value":" 4601"},{"source":"Rural (18)","target":"Intermediate (19)","value":"  957"},{"source":"Urbain (19)","target":"Rural (20)","value":" 1542"},{"source":"Rural (20)","target":"Urbain (21)","value":"  802"}]}],"title":[{"text":"Flux de mobilité selon l'urbanité","subtext":"Années 2018-2021"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Analyse descriptive (4)
+
+<div class="echarts4r html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-26f0b16cf0f5a46575d9" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-26f0b16cf0f5a46575d9">{"x":{"theme":"","tl":true,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"baseOption":{"yAxis":[{"show":true,"name":"Flux"}],"timeline":{"data":["Intermediate (dép)","Rural (dép)","Urbain (dép)"],"axisType":"category"},"xAxis":[{"data":["Intermediate (arr)","Rural (arr)","Urbain (arr)"],"type":"category","boundaryGap":true,"name":"Lieu de départ"}],"legend":{"data":["2019","2020","2021"],"show":true,"type":"plain","top":30},"series":[{"name":"2019","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"name":"2020","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"name":"2021","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"title":[{"text":"Flux de mobilité résidentielle en fonction de la ruralité du lieu de départ et d'arrivé","subtext":"Années: 2019-2021"}],"tooltip":{"trigger":"item"}},"options":[{"series":[{"data":[{"value":["Intermediate (arr)","1797"]},{"value":["Rural (arr)","1511"]},{"value":["Urbain (arr)","4601"]}]},{"data":[{"value":["Intermediate (arr)","1804"]},{"value":["Rural (arr)","1748"]},{"value":["Urbain (arr)","1899"]}]},{"data":[{"value":["Intermediate (arr)","3013"]},{"value":["Rural (arr)","2428"]},{"value":["Urbain (arr)","3766"]}]}]},{"series":[{"data":[{"value":["Intermediate (arr)"," 957"]},{"value":["Rural (arr)","1268"]},{"value":["Urbain (arr)","1092"]}]},{"data":[{"value":["Intermediate (arr)"," 882"]},{"value":["Rural (arr)","1104"]},{"value":["Urbain (arr)"," 876"]}]},{"data":[{"value":["Intermediate (arr)"," 696"]},{"value":["Rural (arr)","1000"]},{"value":["Urbain (arr)"," 802"]}]}]},{"series":[{"data":[{"value":["Intermediate (arr)","3312"]},{"value":["Rural (arr)","1653"]},{"value":["Urbain (arr)","8274"]}]},{"data":[{"value":["Intermediate (arr)","3021"]},{"value":["Rural (arr)","1542"]},{"value":["Urbain (arr)","7341"]}]},{"data":[{"value":["Intermediate (arr)","2585"]},{"value":["Rural (arr)","1371"]},{"value":["Urbain (arr)","6334"]}]}]}],"legend":{"data":[null,null,null,null,null,null,null,null,null]}},"dispose":true,"chartGroup":"target"},"evals":[],"jsHooks":[]}</script>
+
+---
+
+
+
+# Modélisation
+
+**Generalized estimating equation (GEE)**
+- Deux observations
+- Performance
+
+**Modèles**
+
+**Modèle 1** - Complet
+
+**Modèle 2** - Interaction nationalité et période
+
+**Modèle 3** - Interaction nationalité et différence de revenu
+
+
+---
+
+class: center
+
+# Modèle 1
+
+
+
+
+![](Presentation_20_avril_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+---
+
+class: center
+
+# Hypothèse
+
+H1: La pandémie a provoqué une augmentation de la mobilité résidentielle en direction des régions rurales (besoin de confort)
+  &gt;(Marcelo et al., 2022; OFL, 2021; Pagani et al., 2021)
+
+**Confirmée:** Il y a bien une probabilité plus grande de réaliser une mobilité en direction d'un milieu rural dans la période 2020-2021
+
+---
+
+class: center
+
+### Modèle 2
+
+![](Presentation_20_avril_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+---
+
+# Hypothèse
+
+H2: La mobilité en direction des zones rurales provoquée par la crise de la COVID-19 concerne d'avantages la population suisse qu'étrangère
+  &gt;(Lacroix et al., 2020; Wanner, 2017)
+
+**Dans l'autre sens:** Les ménages étrangers ont plus de chance de réaliser une mobilité en direction des zones rurales durant la pandémie.
+
+**Explication:** Phénomène d'adaptation et manque de connaissance du marché du logement et pandémie
+
+---
+
+class: center
+
+### Modèle 3
+
+![](Presentation_20_avril_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+---
+
+# Hypothèse
+
+H3: Une diminution du revenu aura plus d'effet sur la réduction de la mobilité de la population étrangère
+  &gt;(Lacroix et al., 2020)
+  
+Pour la population étrangère:
+
+**1. Une diminution du revenu entraîne une augmentation de mobilité en direction des communes rurales**
+
+**2. Plus la diminution est prononcée plus la probabilité de mobilité en direction d'une commune rurale augmente**
+
+**Explication:** Peut signifier l'arrivé d'un enfant et donc l'arrêt de l'activité de la mère
+
+---
+
+### Limites et améliorations
+
+- Limité au revenu (pas d'autres ressources mesurables)
+  - Articulation de la classe de revenu
+
+- Une prise en compte limitée du parcours de vie des personnes
+  - Âge moyen; influencé par le nombre d'enfants et leur âge: Âge de l’aîné
+  - Différence de taille du ménage: qui part? timing?
+
+---
+
+
+
+
+### Bibliographie (1)
+
+D’Amato, G., Wanner, P., &amp; Steiner, I. (2019). Today’s Migration-Mobility Nexus in Switzerland. In I. Steiner &amp; P. Wanner (Éds.), Migrants and Expats : The Swiss Migration and Mobility Nexus (p. 3‑20). Springer International Publishing. https://doi.org/10.1007/978-3-030-05671-1_1
+
+Duque-Calvache, R., Torrado, J. M., &amp; Mesa-Pedrazas, Á. (2021). Lockdown and adaptation : Residential mobility in Spain during the COVID-19 crisis. European Societies, 23(sup1), S759‑S776. https://doi.org/10.1080/14616696.2020.1836386
+
+Lacroix, J., Gagnon, A., &amp; Wanner, P. (2020). Family changes and residential mobility among immigrant and native-born populations : Evidence from Swiss administrative data. Demographic Research, 43, 1199‑1234.
+
+Lei, L., &amp; Liu, X. (2022). The COVID-19 pandemic and residential mobility intentions in the United States : Evidence from Google Trends data. Population, Space and Place, 28(6), e2581. https://doi.org/10.1002/psp.2581
+
+Marcelo, G.-T., Constance, B., Joseph, M., Kay, A., David, Z., Maarten, V. S., &amp; Adrienne, G.-R. (2022). Do we have enough recreational spaces during pandemics? An answer based on the analysis of individual mobility patterns in Switzerland. Landscape and Urban Planning, 221, 104373. https://doi.org/10.1016/j.landurbplan.2022.104373
+
+---
+
+### Bibliographie (2)
+
+Mexi, M. M., Moreno Russi, P., &amp; Guzman, E. F. (2021). ‘Fortress’ Switzerland? Challenges to Integrating Migrants, Refugees and Asylum-Seekers. In V. Federico &amp; S. Baglioni (Éds.), Migrants, Refugees and Asylum Seekers’ Integration in European Labour Markets : A Comparative Approach on Legal Barriers and Enablers (p. 213‑233). Springer International Publishing. https://doi.org/10.1007/978-3-030-67284-3_11
+
+OFL. (2021). Préférences en matière de logement lors de la pandémie de COVID-19. https://www.bwo.admin.ch/dam/bwo/fr/dokumente/01_Wohnungsmarkt/15_Studien_und_Publikationen/Forschungsberichte/personenfreizuegigkeitundwohnungsmarkt.pdf.download.pdf/libre_circulationdespersonnesetmarchedulogement.pdf
+
+Pagani, A., Fritz, L., Hansmann, R., Kaufmann, V., &amp; Binder, C. R. (2021). How the first wave of COVID-19 in Switzerland affected residential preferences. Cities &amp; Health, 0(0), 1‑13. https://doi.org/10.1080/23748834.2021.1982231
+
+Stawarz, N., Rosenbaum-Feldbrügge, M., Sander, N., Sulak, H., &amp; Knobloch, V. (2022). The impact of the COVID-19 pandemic on internal migration in Germany : A descriptive analysis. Population, Space and Place, 28(6), e2566. https://doi.org/10.1002/psp.2566
+
+Tønnessen, M. (2021). Movers from the city in the first year of Covid. Nordic Journal of Urban Studies, 1(2), 131‑147. https://doi.org/10.18261/issn.2703-8866-2021-02-03
+
+---
+
+### Bibliographie (3)
+
+Wanner, P. (2017). Quitter son lieu de vie pour des raisons économiques ? Une analyse de la mobilité résidentielle au sein de six agglomérations. Office fédéral du logement. https://www.bwo.admin.ch/bwo/fr/home/wie-wir-wohnen/wohnen-und-armut/publikationen-bwo/wohnsitzwechsel.html#
+
+Zufferey, J., Steiner, I., &amp; Ruedin, D. (2021). The Many Forms of Multiple Migrations : Evidence from a Sequence Analysis in Switzerland, 1998 to 2008. International Migration Review, 55(1), 254‑279. https://doi.org/10.1177/0197918320914239
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
