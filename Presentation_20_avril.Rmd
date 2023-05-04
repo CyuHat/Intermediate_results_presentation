@@ -1,0 +1,577 @@
+---
+title: "Mobilité de confort"
+subtitle: "Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?"
+author: "Vestin Hategekimana"
+institute: "IDESO"
+date: "10-04-2023"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# Librairies
+library(dplyr)
+library(tidyr)
+library(arrow)
+library(duckdb)
+library(echarts4r)
+library(gtsummary)
+library(geepack)
+library(sjPlot)
+library(ggeffects)
+```
+
+---
+class: inverse, center, middle
+
+# Migration et Mobilité en temps de crise
+
+---
+
+## Thèse:
+
+--
+
+## Impact longitudinale des crises sur les résultats économiques, sociaux et de mobilité. 
+
+--
+
+## **En particulier le rôle:** du genre, des compétences et du statut migratoire.
+
+--
+
+## **Hypothèse:** Les crises impactent de manière différencier la population étrangère et la population native 
+
+--
+
+## **Données:** Registres fédéraux et Migration Mobility Survey
+
+---
+
+# Article
+
+## *Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?*
+
+--
+
+# Point de départ
+
+## Durant la pandémie, plusieurs facteurs ont influencé la mobilité résidentielle.
+
+---
+
+# Motivations
+
+**Crise: COVID-19**
+
+- Récente
+- Mondiale
+- Globale
+    - Santé, Économie, Mobilité, etc.
+
+--
+
+**Context: Suisse**
+
+- Forte Migration
+    - ~1/3 population résidente (D’Amato et al., 2019)
+- Marché du logement spécifique
+    - Petit pays
+    - Accès à la propriété limité (Wanner, 2017)
+    - Accès à la mobilité limité (Wanner, 2017)
+
+--
+
+**Données: Registres de la population**
+- Exhaustives
+
+---
+
+class: inverse, center, middle
+
+# Revue de la littérature
+
+## Mobilité résidentielle durant la pandémie
+
+---
+
+# Besoin de confort (Suisse)
+
+--
+
+(Pagani et al., 2021)
+
+**Effet de la première vague de covid-19 sur la préférence résidentielle**
+- Pour 60% des répondants la fonction idéale de la maison en tant que place pour l'autoreprésentation a pris de l'importance. Et les besoins basiques de logement ont perdu en importance
+
+*Note: Autoreprésentation = place pour l'expression, pour la satisfaction des aspirations*
+
+--
+
+--- 
+
+(Marcelo et al., 2022)
+
+**Études sur le besoin d'espace récréatif à Zürich à l'aide de données de mobilité GPS**
+- Ce sont surtout les villes principales du cantons qui sont saturées et le covid-19 a augmenté les besoins
+
+*Note: Mesure de la demande en comptant la proportion de personnes qui ont fait des marches récréatives qui correspondent à des tours (retour au départ) labélisés comme loisir ou marche (MOBIS:COVID19)*
+
+---
+
+# Facteurs de la mobilité résidentielle  durant la pandémie
+
+(Duque-Calvache et al., 2021)
+
+- Données de sondage (Espagne, ~3'000)
+- Facteurs:
+	1. Besoin de meilleur conditions de logement
+	2. Besoin de prendre soin des autres et d'être pris en charge
+	3. Solitude, peur et Problèmes économiques (mobilité forcée)
+
+L'importance de ces facteurs dépend d’autres caractéristiques socioéconomiques tels que la classe sociale et l’âge.
+
+- Classe
+    - ouvrier: confort
+    - classe moyenne: proximité familiale
+- Âge
+    - jeunes: confort/proximité
+    - ~30 ans: économique/forcée
+    - +40 ans: soin
+
+---
+
+## Autres cas durant la pandémie
+
+???
+
+1) The impact of the COVID-19 pandemic on internal migration in Germany: A descriptive analysis
+
+2) Movers from the city in the frist year of covid
+- Suède (Stockohlm)
+- Finland (Helsinki)
+- Danemark (Copenhague)
+- États-Unis (New-York, Chicago, San-Fransisco, Washington DC, Houston, Philadelphia)
+- Royaum-uni
+- Compare caractéristique socioéconomique des anciens flux en dehors des villes avec les nouveaux flux du covid
+
+3) The COVID-19 pandemic and residential mobility intention in the United-State: Evidence from Google Trends data
+
+--
+
+.pull-left[
+**Allemagne**
+
+(Stawarz et al., 2022)
+
+- Données de registres
+- Solde migratoire négatif des villes
+- Flux familiaux sortant / moins de flux de jeunes
+]
+
+--
+
+.pull-right[
+**Norvège (Oslo)**
+
+(Tønnessen, 2021)
+
+- Données de registre
+- Forte mobilité en dehors de la ville
+- principalement:
+    - Personnes âgées
+    - Télétravaille
+    - Non-originaire de la ville
+]
+
+--
+
+**États-Unis**
+
+(Lei & Liu, 2022)
+
+- Google trends
+- Réduction de l'intention de mobilité
+- Augmentation drastique ensuite
+- Intention de proximité familiale
+
+---
+
+## Facteurs influancant la mobilité durant la pandémie
+
+- **Aspiration**
+    - Besoin de confort (départ des villes)
+    - Besoin de proximité avec les proches
+
+--
+
+- **Caractéristiques socioéconomiques**
+    - Âge
+    - Classe sociale
+    - Activité
+    - État-civil
+    - Famille
+
+> Les caractéristiques socioéconomiques influencent les aspirations
+
+En raison des données l'article porte sur le besoin de confort ou autrement dit la **mobilité en direction de zones rurales**.
+
+---
+
+# Cas en Suisse
+
+(Présentation 20 avril - Article de l'OFL)
+
+Données de registre
+- Légère propension à déménager vers des régions moins densément peuplée
+- Cas marginal: 0.52% des cas de mobilité (769'000)
+- Catégorie particulière:
+    - Personne seule
+    - Mobile
+    - Haut salaire
+    - **Donc flexible**
+- Demande de logement en propriété
+    - Hausse pour les maison individuelles
+    - Hausse pour les surfaces plus étendues
+
+---
+
+# Mobilité résidentielle en Suisse
+
+(Lacroix et al., 2020)
+
+**Le rôle des évènements familiaux sur la mobilité**
+
+- mobilité résidentielle augmente:
+    - naissance d'un nouvel enfant
+    - marriage
+    - divorce
+
+Probabilité de mobilité plus forte pour la population suisse.
+
+Importance du revenu du ménage dans la probabilité de réaliser une mobilité résidentielle en lien avec les évènements de vie.
+  > Effet plus fort pour la population étrangère
+
+---
+
+# Mobilité résidentielle en Suisse
+
+(Wanner, 2017)
+
+**Vérifier l'hypothèse d'un départ des villes des ménages les plus pauvres dans 6 agglomérations**
+
+L'hypothèse n'est pas vérifiée
+- Revenu aisé quittent les villes, plus faibles revenus rejoignent les villes
+- Solde migratoire négatif pour les centres (départ population active).
+- Mobilité intracommunnale fréquente pour faibles revenus.
+- Le revenu du ménage important dans la capacité de mobilité en dehors de la commune
+- Peu d'écart entre population étrangère et native
+- Possible effet sur la ségrégation spatiale écnomique
+
+Autres facteurs:
+- Âge
+- Taille du ménage
+- État-civil
+- Niveau de formation
+- Statut sur le marché du travail
+
+---
+
+# Résumé
+
+--
+
+**Mobilité vers les régions rurales plus prononcées en période de pandémie** (OFL, 2021)
+
+--
+
+**Potentiel besoin de confort** (Marcelo et al., 2022; Pagani et al., 2021)
+
+--
+
+**Le profils ayant accès à cette mobilité** (Stawarz et al., 2022; Tønnessen, 2021)
+- Personnes seules / familles
+- Haut revenu
+
+--
+
+**Questions**
+- Y a-t-il eu une augmentation des flux en direction des régions rurales durant la pandémie en Suisse?
+- Y a-t-il eu une différence dans la mobilité résidentielle entre la population native et la population étrangère?
+
+---
+
+# Question de recherche
+
+*Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?*
+
+H1: La pandémie a provoqué une augmentation de la mobilité résidentielle en direction des régions rurales (besoin de confort)
+  >(Marcelo et al., 2022; OFL, 2021; Pagani et al., 2021)
+
+H2: La mobilité en direction des zones rurales provoquée par la crise de la COVID-19 concerne d'avantages la population suisse qu'étrangère
+  >(Lacroix et al., 2020; Wanner, 2017)
+
+H3: Une diminution du revenu aura plus d'effet sur la réduction de la mobilité de la population étrangère
+  >(Lacroix et al., 2020)
+
+---
+
+# Mobilité résidentielle (concept)
+
+
+### **Mobilité résidentielle:** Changement de logement entre le 1er janvier et les 31 décembre d'une année
+
+--
+
+### *Tout autre déplacement  au milieu de l'année n'est pas considéré*
+
+--
+
+## Quatre modalités
+
+- intracommunale
+- **intercommunale (intracantonale)**
+- **intercommunale (intercantonale)**
+- internationale
+
+--
+
+### Pour des raisons liées aux données et à la question de recherche seules les mobilités intercommunales seront prises en compte.
+
+---
+
+### Opérationalisation
+
+**Données**
+- STATPOP: Statistique de la population et des ménages (registres)
+- Registre des comptes individuels de Centrale de compensation AVS
+- Mise en relation des données avec le numéro AVS
+
+**Population (ménage)**
+- Population de moins de 65 ans
+- Présente sans interruption entre 2018-2021
+- Ménage de 3 à 10 personnes
+- Résidence principale
+
+**Variables indépendantes**
+- Nationalité (suisse, étranger, mixte)
+- Revenu du ménage (quantile, évolution)
+- Taille du ménage
+- Âge médian du Ménage
+- Urbanité du précédent logement (Urbain, Rural, Intermédiaire)
+
+**Biannuelle**
+- (2018-2019) vs (2020-2021)
+
+---
+
+# Ménage
+
+Les identifiants du ménage sont uniques rendant le suivit dans le temps 
+
+l'Appariement a été réalisée par des algorithmes d'analyse de réseau (bipartite projection et component detection)
+
+> Besoin d'une illustration
+
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+third <- open_dataset("MyData/third.parquet") 
+```
+
+---
+
+# Analyse descriptive (1)
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+third %>% 
+  to_duckdb() %>% 
+  mutate(rural = if_else(is.na(rural), "Intermediate", rural)) %>% 
+  count(rural) %>% 
+  collect() %>% 
+  e_charts(rural) %>% 
+  e_pie(n) %>% 
+  e_title("Distribution des ménages", "2018-2021") %>% 
+  e_tooltip("item")
+```
+
+---
+
+# Analyse descriptive (2)
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+third %>% 
+  to_duckdb() %>% 
+  mutate(mobilite = if_else(mob == 1, "Mobilité", "Immobilité")) %>% 
+  filter(!is.na(mobilite)) %>% 
+  count(mobilite) %>% 
+  collect() %>% 
+  e_charts(mobilite) %>% 
+  e_pie(n) %>% 
+  e_title("Mobilité résidentielle\ndes ménages", "2018-2021") %>% 
+  e_tooltip("item")
+```
+
+---
+
+# Analyse descriptive (3)
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+third %>% 
+  to_duckdb() %>% 
+  arrange(hh_long, year) %>% 
+  group_by(hh_long) %>% 
+  mutate(target = if_else(is.na(rural), "Intermediate", rural),
+         source = lag(target),
+         mobility = sum(mob, na.rm=TRUE)) %>% 
+  ungroup() %>% 
+  filter(!is.na(source)) %>% 
+  filter(mobility > 0) %>% 
+  select(year, source, target) %>%   
+  count(y2 = year, source, target) %>% 
+  mutate(y2 = as.integer(y2 - 2000),
+         y1 = as.integer(y2 - 1),
+         s = paste0(source, " (", y1, ")"),
+         t = paste0(target, " (", y2, ")")) %>% 
+  select(s, t, n) %>% 
+  collect() %>% 
+  e_charts() %>% 
+  e_sankey(s, t, n) %>% 
+  e_title("Flux de mobilité selon l'urbanité", "Années 2018-2021") %>% 
+  e_tooltip("item")
+```
+
+---
+
+# Analyse descriptive (4)
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+third %>% # 66'677
+  to_duckdb() %>% 
+  arrange(hh_long, year) %>% 
+  group_by(hh_long) %>% 
+  mutate(target = if_else(is.na(rural), "Intermediate", rural),
+         source = lag(target)) %>% 
+  ungroup() %>% 
+  filter(!is.na(source), mob == 1) %>% 
+  count(year, source, target) %>% 
+  collect() %>% 
+  spread(year, n) %>% 
+  mutate(source = paste(source, "(dép)"),
+           target = paste(target, "(arr)")) %>% 
+  group_by(source) %>%
+  e_charts(target, timeline = TRUE) %>% 
+  e_bar(`2019`) %>% 
+  e_bar(`2020`) %>% 
+  e_bar(`2021`) %>% 
+  e_group("target") %>% 
+  e_title("Flux de mobilité résidentielle en fonction de la ruralité du lieu de départ et d'arrivé",
+          "Années: 2019-2021") %>% 
+  e_axis_labels(x = "Lieu de départ", y = "Flux") %>% 
+  e_tooltip("item") %>% 
+  e_legend(top = 30)
+```
+
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+fourth <- open_dataset("MyData/fourth.parquet")
+```
+
+# Analyse inférentielle
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# fourth %>% 
+#   collect() %>% 
+#   drop_na() %>% 
+#   mutate(mobilite = if_else(mobru == 1, "Mobilité", "Immobilité")) %>% 
+#   select(mobilite, nationalite = nationinality) %>% 
+#   tbl_summary(by = mobilite) %>% 
+#   add_p() %>% 
+#   add_overall(col_label = "Total")
+```
+
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+fourth %>% 
+  collect() %>% 
+  drop_na() %>% 
+  mutate(mobilite = if_else(mobru == 1, "Mobilité", "Immobilité")) %>% 
+  select(mobilite, nationalite = nationinality) %>% 
+  tbl_summary(by = mobilite) %>% 
+  add_p() %>% 
+  add_overall(col_label = "Total")
+```
+
+
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+load("MyData/m1.rda")
+plot_model(m1)
+rm(m1)
+```
+
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+load("MyData/m2.rda")
+ggeffect(m2, terms = c("nationalite", "period")) %>% 
+  plot()
+rm(m2)
+```
+
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+load("MyData/m3.rda")
+ggeffect(m3, terms = c("nationalite", "diff_revenu")) %>% 
+  plot()
+rm(m3)
+```
+
+---
+
+### Bibliographie
+
+D’Amato, G., Wanner, P., & Steiner, I. (2019). Today’s Migration-Mobility Nexus in Switzerland. In I. Steiner & P. Wanner (Éds.), Migrants and Expats : The Swiss Migration and Mobility Nexus (p. 3‑20). Springer International Publishing. https://doi.org/10.1007/978-3-030-05671-1_1
+
+Duque-Calvache, R., Torrado, J. M., & Mesa-Pedrazas, Á. (2021). Lockdown and adaptation : Residential mobility in Spain during the COVID-19 crisis. European Societies, 23(sup1), S759‑S776. https://doi.org/10.1080/14616696.2020.1836386
+
+Lacroix, J., Gagnon, A., & Wanner, P. (2020). Family changes and residential mobility among immigrant and native-born populations : Evidence from Swiss administrative data. Demographic Research, 43, 1199‑1234.
+
+Lei, L., & Liu, X. (2022). The COVID-19 pandemic and residential mobility intentions in the United States : Evidence from Google Trends data. Population, Space and Place, 28(6), e2581. https://doi.org/10.1002/psp.2581
+
+Marcelo, G.-T., Constance, B., Joseph, M., Kay, A., David, Z., Maarten, V. S., & Adrienne, G.-R. (2022). Do we have enough recreational spaces during pandemics? An answer based on the analysis of individual mobility patterns in Switzerland. Landscape and Urban Planning, 221, 104373. https://doi.org/10.1016/j.landurbplan.2022.104373
+
+---
+
+### Bibliographie
+
+Mexi, M. M., Moreno Russi, P., & Guzman, E. F. (2021). ‘Fortress’ Switzerland? Challenges to Integrating Migrants, Refugees and Asylum-Seekers. In V. Federico & S. Baglioni (Éds.), Migrants, Refugees and Asylum Seekers’ Integration in European Labour Markets : A Comparative Approach on Legal Barriers and Enablers (p. 213‑233). Springer International Publishing. https://doi.org/10.1007/978-3-030-67284-3_11
+
+OFL. (2021). Préférences en matière de logement lors de la pandémie de COVID-19. https://www.bwo.admin.ch/dam/bwo/fr/dokumente/01_Wohnungsmarkt/15_Studien_und_Publikationen/Forschungsberichte/personenfreizuegigkeitundwohnungsmarkt.pdf.download.pdf/libre_circulationdespersonnesetmarchedulogement.pdf
+
+Pagani, A., Fritz, L., Hansmann, R., Kaufmann, V., & Binder, C. R. (2021). How the first wave of COVID-19 in Switzerland affected residential preferences. Cities & Health, 0(0), 1‑13. https://doi.org/10.1080/23748834.2021.1982231
+
+Stawarz, N., Rosenbaum-Feldbrügge, M., Sander, N., Sulak, H., & Knobloch, V. (2022). The impact of the COVID-19 pandemic on internal migration in Germany : A descriptive analysis. Population, Space and Place, 28(6), e2566. https://doi.org/10.1002/psp.2566
+
+Tønnessen, M. (2021). Movers from the city in the first year of Covid. Nordic Journal of Urban Studies, 1(2), 131‑147. https://doi.org/10.18261/issn.2703-8866-2021-02-03
+
+---
+
+### Bibliographie
+
+Wanner, P. (2017). Quitter son lieu de vie pour des raisons économiques ? Une analyse de la mobilité résidentielle au sein de six agglomérations. Office fédéral du logement. https://www.bwo.admin.ch/bwo/fr/home/wie-wir-wohnen/wohnen-und-armut/publikationen-bwo/wohnsitzwechsel.html#
+
+Zufferey, J., Steiner, I., & Ruedin, D. (2021). The Many Forms of Multiple Migrations : Evidence from a Sequence Analysis in Switzerland, 1998 to 2008. International Migration Review, 55(1), 254‑279. https://doi.org/10.1177/0197918320914239
