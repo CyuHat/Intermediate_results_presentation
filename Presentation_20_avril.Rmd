@@ -415,13 +415,12 @@ third <- open_dataset("MyData/third.parquet")
 ```{r message=FALSE, warning=FALSE, echo=FALSE, results='asis'}
 third %>%
   transmute(`Mobilité` = if_else(mobru==1, "Rural", "Non"),
-            `Période` = period,
             `Nationalité` = nationality,
             `Urbanité` = rural,
             `Taille` = size) %>% 
   collect() %>% 
   drop_na() %>% 
-  arsenal::tableby(~ `Mobilité` + `Période` + `Nationalité` + `Urbanité`, data = .) %>% 
+  arsenal::tableby(~ `Mobilité` + `Nationalité` + `Urbanité`, data = .) %>% 
   summary()
 ```
 
