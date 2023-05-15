@@ -597,7 +597,7 @@ ggeffect(m3, terms = c("nationalite", "diff_revenu")) %>%
   plot() +
   labs(title = "Probabilité prédite de réaliser une mobilité résidentielle en direction\nd'une commune rurale",
        subtitle = "2018-2021", 
-       color = "Période")
+       color = "Dif. revenu")
 rm(m3)
 ```
 
@@ -618,10 +618,11 @@ Pour la population étrangère:
 
 ---
 
-**Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?**
+# Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?
 
-1. La pandémie a augmenté l'effet de se déplacer en région rurale
-2. Mobilité dépend du revenu du ménage: La classe de revenu reste le facteur le plus fort
+## 1) La pandémie a augmenté l'effet de se déplacer en région rurale
+
+## 2) Mobilité dépend du revenu du ménage: La classe de revenu reste le facteur le plus fort
 
 ---
 
@@ -629,14 +630,14 @@ Pour la population étrangère:
 
 *Est-ce qu'une mobilité en zone rurale est forcément une mobilité de confort?*
 
-- Limité au revenu (pas d'autres ressources mesurables)
+- **Limité au revenu (pas d'autres ressources mesurables)**
   - Articulation de la classe de revenu
 
-- Une prise en compte limitée de la géographie
+- **Une prise en compte limitée de la géographie**
   - Aucune information sur le canton, le type de mobilité ou la distance
   - Faible information sur la commune
 
-- Une prise en compte limitée du parcours de vie des personnes
+- **Une prise en compte limitée du parcours de vie des personnes**
   - Âge moyen; influencé par le nombre d'enfants et leur âge: Âge de l'aîné
   - Différence de taille du ménage: qui part? timing?
 
