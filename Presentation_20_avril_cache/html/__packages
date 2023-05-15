@@ -8,8 +8,7 @@ gtsummary
 geepack
 sjPlot
 ggeffects
-igraph
-ggplot2
-ggraph
 tidygraph
+igraph
 networkD3
+ggplot2

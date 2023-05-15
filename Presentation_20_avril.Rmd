@@ -1,9 +1,9 @@
 ---
-title: "Mobilité de confort"
+title: "Mobilité de confort?"
 subtitle: "Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?"
 author: "Vestin Hategekimana"
 institute: "IDESO"
-date: "10-04-2023"
+date: "16-05-2023"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -28,34 +28,11 @@ library(gtsummary)
 library(geepack)
 library(sjPlot)
 library(ggeffects)
+library(ggplot2)
+library(tidygraph)
+library(igraph)
+library(networkD3)
 ```
-
----
-class: inverse, center, middle
-
-# Migration et Mobilité en temps de crise
-
----
-
-## Thèse:
-
---
-
-## Impact longitudinale des crises sur les résultats économiques, sociaux et de mobilité. 
-
---
-
-## **En particulier le rôle:** du genre, des compétences et du statut migratoire.
-
---
-
-## **Hypothèse:** Les crises impactent de manière différencier la population étrangère et la population native 
-
---
-
-## **Données:** Registres fédéraux et Migration Mobility Survey
-
----
 
 # Article
 
@@ -85,7 +62,6 @@ class: inverse, center, middle
 - Forte Migration
     - ~1/3 population résidente (D’Amato et al., 2019)
 - Marché du logement spécifique
-    - Petit pays
     - Accès à la propriété limité (Wanner, 2017)
     - Accès à la mobilité limité (Wanner, 2017)
 
@@ -136,17 +112,17 @@ class: inverse, center, middle
 - Facteurs:
 	1. Besoin de meilleur conditions de logement
 	2. Besoin de prendre soin des autres et d'être pris en charge
-	3. Solitude, peur et Problèmes économiques (mobilité forcée)
+	3. Mobilité forcé: Solitude, peur et problèmes économiques
 
-L'importance de ces facteurs dépend d’autres caractéristiques socioéconomiques tels que la classe sociale et l’âge.
+L'importance de ces facteurs dépend d’autres caractéristiques socioéconomiques telles que la classe sociale et l’âge.
 
 - Classe
     - ouvrier: confort
     - classe moyenne: proximité familiale
 - Âge
     - jeunes: confort/proximité
-    - ~30 ans: économique/forcée
-    - +40 ans: soin
+    - ~30 ans: économique
+    - ++ ans: soin
 
 ---
 
@@ -185,7 +161,7 @@ L'importance de ces facteurs dépend d’autres caractéristiques socioéconomiq
 
 (Tønnessen, 2021)
 
-- Données de registre
+- Données de registres
 - Forte mobilité en dehors de la ville
 - principalement:
     - Personnes âgées
@@ -206,9 +182,9 @@ L'importance de ces facteurs dépend d’autres caractéristiques socioéconomiq
 
 ---
 
-## Facteurs influancant la mobilité durant la pandémie
+## Facteurs influançant la mobilité durant la pandémie
 
-- **Aspiration**
+- **Aspirations**
     - Besoin de confort (départ des villes)
     - Besoin de proximité avec les proches
 
@@ -229,9 +205,9 @@ En raison des données l'article porte sur le besoin de confort ou autrement dit
 
 # Cas en Suisse
 
-(Présentation 20 avril - Article de l'OFL)
+(OFL, 2021)
 
-Données de registre
+Données de registres
 - Légère propension à déménager vers des régions moins densément peuplée
 - Cas marginal: 0.52% des cas de mobilité (769'000)
 - Catégorie particulière:
@@ -272,10 +248,10 @@ Importance du revenu du ménage dans la probabilité de réaliser une mobilité 
 L'hypothèse n'est pas vérifiée
 - Revenu aisé quittent les villes, plus faibles revenus rejoignent les villes
 - Solde migratoire négatif pour les centres (départ population active).
-- Mobilité intracommunnale fréquente pour faibles revenus.
+- Mobilité intracommunale fréquente pour faibles revenus.
 - Le revenu du ménage important dans la capacité de mobilité en dehors de la commune
 - Peu d'écart entre population étrangère et native
-- Possible effet sur la ségrégation spatiale écnomique
+- Possible effet sur la ségrégation spatiale économique
 
 Autres facteurs:
 - Âge
@@ -345,15 +321,27 @@ H3: Une diminution du revenu aura plus d'effet sur la réduction de la mobilité
 
 --
 
-### Pour des raisons liées aux données et à la question de recherche seules les mobilités intercommunales seront prises en compte.
+### Pour des raisons liées aux données et à la question de recherche, seules les mobilités intercommunales seront prises en compte.
 
 ---
 
-### Opérationalisation
+## Rural-Intermédiaire-Urbain
+
+La classification urbain-rural de 2012 s'appuie sur une typologie de neuf types de communes, qui elle-même prend en compte des facteurs tels que la densité, la taille et l'accessibilité.
+
+*Intermédiaire = Périurbain dense et Centres ruraux* 
+
+Intermédiaire, ex: Satigny, Aire-la-ville, Perly-Certoux, Soral, Bardonnex, etc.
+
+[Carte typologie urbain-rural](https://www.atlas.bfs.admin.ch/maps/13/map/mapIdOnly/26733_fr.html)
+
+---
+
+### Opérationnalisation
 
 **Données**
 - STATPOP: Statistique de la population et des ménages (registres)
-- Registre des comptes individuels de Centrale de compensation AVS
+- Registre des comptes individuels de la Centrale de compensation AVS
 - Mise en relation des données avec le numéro AVS
 
 **Population (ménage)**
@@ -364,23 +352,55 @@ H3: Une diminution du revenu aura plus d'effet sur la réduction de la mobilité
 
 **Variables indépendantes**
 - Nationalité (suisse, étranger, mixte)
-- Revenu du ménage (quantile, évolution)
-- Taille du ménage
-- Âge médian du Ménage
-- Urbanité du précédent logement (Urbain, Rural, Intermédiaire)
+- Revenu du ménage (décile, évolution)
+- Taille du ménage (effectif, évolution)
+- Âge moyen du ménage
+- Urbanité du précédent logement (urbain, rural, intermédiaire)
 
-**Biannuelle**
+**Bi-annuel**
 - (2018-2019) vs (2020-2021)
 
 ---
 
 # Ménage
 
-Les identifiants du ménage sont uniques rendant le suivit dans le temps 
+Les identifiants du ménage sont uniques rendant le suivit dans le temps compliqué
 
 l'Appariement a été réalisée par des algorithmes d'analyse de réseau (bipartite projection et component detection)
 
-> Besoin d'une illustration
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+load("MyData/network_example.rda")
+```
+
+.pull-left[
+
+**Bipartite (1)**
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+forceNetwork(Links = links, Nodes = nodes,
+             Source = "from", Target = "to",
+             NodeID = "rowid",
+             Group = "type",
+             opacity = 0.8, 
+             colourScale = JS("d3.scaleOrdinal(d3.schemeCategory10);"))
+```
+
+]
+
+.pull-right[
+
+**One mode (2)**
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+forceNetwork(Links = links2, Nodes = nodes2,
+             Source = "from", Target = "to",
+             NodeID = "rowid",
+             Group = "group",
+             opacity = 0.8, 
+             colourScale = JS("d3.scaleOrdinal(d3.schemeCategory10);"))
+```
+
+]
 
 ---
 
@@ -388,42 +408,47 @@ l'Appariement a été réalisée par des algorithmes d'analyse de réseau (bipar
 third <- open_dataset("MyData/third.parquet") 
 ```
 
+### Population
+
+.pull-left[
+
+```{r message=FALSE, warning=FALSE, echo=FALSE, results='asis'}
+third %>%
+  transmute(`Mobilité` = if_else(mobru==1, "Rural", "Non"),
+            `Période` = period,
+            `Nationalité` = nationality,
+            `Urbanité` = rural,
+            `Taille` = size) %>% 
+  collect() %>% 
+  drop_na() %>% 
+  arsenal::tableby(~ `Mobilité` + `Période` + `Nationalité` + `Urbanité`, data = .) %>% 
+  summary()
+```
+
+]
+
+.pull-right[
+
+```{r message=FALSE, warning=FALSE, echo=FALSE, results='asis'}
+third %>% 
+  transmute(`Mobilité` = if_else(mobru==1, "Rural", "Non"),
+            `Période` = period,
+            `Nationalité` = nationality,
+            `Urbanité` = rural,
+            size) %>% 
+  collect() %>% 
+  drop_na() %>% 
+  transmute(`Taille` = if_else(size==3, "3",
+                               if_else(between(size, 4,5), "4-5", ">5"))) %>% 
+  arsenal::tableby(~ `Taille`, data = .) %>% 
+  summary()
+```
+
+]
+
 ---
 
 # Analyse descriptive (1)
-
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-third %>% 
-  to_duckdb() %>% 
-  mutate(rural = if_else(is.na(rural), "Intermediate", rural)) %>% 
-  count(rural) %>% 
-  collect() %>% 
-  e_charts(rural) %>% 
-  e_pie(n) %>% 
-  e_title("Distribution des ménages", "2018-2021") %>% 
-  e_tooltip("item")
-```
-
----
-
-# Analyse descriptive (2)
-
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-third %>% 
-  to_duckdb() %>% 
-  mutate(mobilite = if_else(mob == 1, "Mobilité", "Immobilité")) %>% 
-  filter(!is.na(mobilite)) %>% 
-  count(mobilite) %>% 
-  collect() %>% 
-  e_charts(mobilite) %>% 
-  e_pie(n) %>% 
-  e_title("Mobilité résidentielle\ndes ménages", "2018-2021") %>% 
-  e_tooltip("item")
-```
-
----
-
-# Analyse descriptive (3)
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 third %>% 
@@ -446,13 +471,13 @@ third %>%
   collect() %>% 
   e_charts() %>% 
   e_sankey(s, t, n) %>% 
-  e_title("Flux de mobilité selon l'urbanité", "Années 2018-2021") %>% 
+  e_title("Flux de mobilité des ménages selon l'urbanité (tronqué)", "Années 2018-2021") %>% 
   e_tooltip("item")
 ```
 
 ---
 
-# Analyse descriptive (4)
+# Analyse descriptive (2)
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 third %>% # 66'677
@@ -483,66 +508,147 @@ third %>% # 66'677
 
 ---
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
+```{r echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
+rm(third)
 fourth <- open_dataset("MyData/fourth.parquet")
 ```
 
-# Analyse inférentielle
+# Modélisation
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-# fourth %>% 
-#   collect() %>% 
-#   drop_na() %>% 
-#   mutate(mobilite = if_else(mobru == 1, "Mobilité", "Immobilité")) %>% 
-#   select(mobilite, nationalite = nationinality) %>% 
-#   tbl_summary(by = mobilite) %>% 
-#   add_p() %>% 
-#   add_overall(col_label = "Total")
-```
+**Generalized estimating equation (GEE)**
+- Deux observations
+- Performance
 
----
+**Modèles**
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-fourth %>% 
-  collect() %>% 
-  drop_na() %>% 
-  mutate(mobilite = if_else(mobru == 1, "Mobilité", "Immobilité")) %>% 
-  select(mobilite, nationalite = nationinality) %>% 
-  tbl_summary(by = mobilite) %>% 
-  add_p() %>% 
-  add_overall(col_label = "Total")
-```
+**Modèle 1** - Complet
+
+**Modèle 2** - Interaction nationalité et période
+
+**Modèle 3** - Interaction nationalité et différence de revenu
 
 
 ---
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
+class: center
+
+### Modèle 1
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
+load("MyData/fourth_final.rda")
+```
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
+# rm(fourth)
 load("MyData/m1.rda")
-plot_model(m1)
+plot_model(m1, show.values = TRUE) +
+  labs(title = "Probabilité de réaliser une mobilité résidentielle en direction\nd'une commune rurale",
+       subtitle = "2018-2021") +
+  theme_bw()
 rm(m1)
 ```
 
 ---
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
+class: center
+
+# Hypothèse
+
+H1: La pandémie a provoqué une augmentation de la mobilité résidentielle en direction des régions rurales (besoin de confort)
+  >(Marcelo et al., 2022; OFL, 2021; Pagani et al., 2021)
+
+**Confirmée:** Il y a bien une probabilité plus grande de réaliser une mobilité en direction d'un milieu rural dans la période 2020-2021
+
+---
+
+class: center
+
+### Modèle 2
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
 load("MyData/m2.rda")
-ggeffect(m2, terms = c("nationalite", "period")) %>% 
-  plot()
+ggeffect(m2, terms = c("nationalite", "period")) %>%
+  plot() +
+  labs(title = "Probabilité prédite de réaliser une mobilité résidentielle en direction\nd'une commune rurale",
+       subtitle = "2018-2021", 
+       color = "Période")
 rm(m2)
 ```
 
 ---
 
+# Hypothèse
+
+H2: La mobilité en direction des zones rurales provoquée par la crise de la COVID-19 concerne d'avantages la population suisse qu'étrangère
+  >(Lacroix et al., 2020; Wanner, 2017)
+
+**Dans l'autre sens:** Les ménages étrangers ont plus de chance de réaliser une mobilité en direction des zones rurales durant la pandémie.
+
+**Explication:** Phénomène d'adaptation et manque de connaissance du marché du logement et pandémie
+
+---
+
+class: center
+
+### Modèle 3
+
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 load("MyData/m3.rda")
 ggeffect(m3, terms = c("nationalite", "diff_revenu")) %>% 
-  plot()
+  plot() +
+  labs(title = "Probabilité prédite de réaliser une mobilité résidentielle en direction\nd'une commune rurale",
+       subtitle = "2018-2021", 
+       color = "Période")
 rm(m3)
 ```
 
 ---
 
-### Bibliographie
+# Hypothèse
+
+H3: Une diminution du revenu aura plus d'effet sur la réduction de la mobilité de la population étrangère
+  >(Lacroix et al., 2020)
+  
+Pour la population étrangère:
+
+**1. Une diminution du revenu entraîne une augmentation de mobilité en direction des communes rurales**
+
+**2. Plus la diminution est prononcée plus la probabilité de mobilité en direction d'une commune rurale augmente**
+
+**Explication:** Peut signifier l'arrivé d'un enfant et donc l'arrêt de l'activité de la mère
+
+---
+
+**Dans quelle mesure la crise de la COVID-19 a-t-elle produit un modèle de mobilité résidentielle inégal en Suisse ?**
+
+1. La pandémie a augmenté l'effet de se déplacer en région rurale
+2. Mobilité dépend du revenu du ménage: La classe de revenu reste le facteur le plus fort
+
+---
+
+### Limites et améliorations
+
+*Est-ce qu'une mobilité en zone rurale est forcément une mobilité de confort?*
+
+- Limité au revenu (pas d'autres ressources mesurables)
+  - Articulation de la classe de revenu
+
+- Une prise en compte limitée de la géographie
+  - Aucune information sur le canton, le type de mobilité ou la distance
+  - Faible information sur la commune
+
+- Une prise en compte limitée du parcours de vie des personnes
+  - Âge moyen; influencé par le nombre d'enfants et leur âge: Âge de l'aîné
+  - Différence de taille du ménage: qui part? timing?
+
+---
+
+```{r echo=FALSE, warning=FALSE}
+rm(final)
+```
+
+
+### Bibliographie (1)
 
 D’Amato, G., Wanner, P., & Steiner, I. (2019). Today’s Migration-Mobility Nexus in Switzerland. In I. Steiner & P. Wanner (Éds.), Migrants and Expats : The Swiss Migration and Mobility Nexus (p. 3‑20). Springer International Publishing. https://doi.org/10.1007/978-3-030-05671-1_1
 
@@ -556,7 +662,7 @@ Marcelo, G.-T., Constance, B., Joseph, M., Kay, A., David, Z., Maarten, V. S., &
 
 ---
 
-### Bibliographie
+### Bibliographie (2)
 
 Mexi, M. M., Moreno Russi, P., & Guzman, E. F. (2021). ‘Fortress’ Switzerland? Challenges to Integrating Migrants, Refugees and Asylum-Seekers. In V. Federico & S. Baglioni (Éds.), Migrants, Refugees and Asylum Seekers’ Integration in European Labour Markets : A Comparative Approach on Legal Barriers and Enablers (p. 213‑233). Springer International Publishing. https://doi.org/10.1007/978-3-030-67284-3_11
 
@@ -570,7 +676,7 @@ Tønnessen, M. (2021). Movers from the city in the first year of Covid. Nordic J
 
 ---
 
-### Bibliographie
+### Bibliographie (3)
 
 Wanner, P. (2017). Quitter son lieu de vie pour des raisons économiques ? Une analyse de la mobilité résidentielle au sein de six agglomérations. Office fédéral du logement. https://www.bwo.admin.ch/bwo/fr/home/wie-wir-wohnen/wohnen-und-armut/publikationen-bwo/wohnsitzwechsel.html#
 
